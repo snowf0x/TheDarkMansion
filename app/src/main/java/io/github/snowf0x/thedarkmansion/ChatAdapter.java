@@ -19,6 +19,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     ChatAdapter(ArrayList<String> text, int player) {
         this.text = text;
         this.player = player;
+        //constructor
     }
 
     @NonNull
