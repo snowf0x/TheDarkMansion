@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChoosePlayer"
+    android:orientation="vertical"
+    android:background="#000">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="305dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="Choose Player"
+        android:textColor="@color/colorAccent"
+        android:textSize="42sp" />
+
+
+
+    <Button
+        android:background="#2c3c71"
+        android:id="@+id/p_one"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:onClick="choose"
+        android:text="Player 1" />
+
+    <Button
+        android:background="#9f1a46"
+        android:id="@+id/p_two"
+        android:onClick="choose"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:text="Player 2" />
+
+
+</LinearLayout>

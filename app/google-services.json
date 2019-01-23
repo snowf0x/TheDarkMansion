@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "534896605873",
+    "firebase_url": "https://the-dark-mansion.firebaseio.com",
+    "project_id": "the-dark-mansion",
+    "storage_bucket": "the-dark-mansion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534896605873:android:f2133b7bb17f8801",
+        "android_client_info": {
+          "package_name": "io.github.snowf0x.thedarkmansion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534896605873-p7elmfmpb40tgtfi4glj3q0e9viiohnv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.snowf0x.thedarkmansion",
+            "certificate_hash": "1e0a5f8413a17ff2f157f2285a8a6163f2889396"
+          }
+        },
+        {
+          "client_id": "534896605873-udrhsnqahi7q8hs5rlc7670gmbeut0r6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnT7k8OxMzwCXAti3WjzYy_CJbRvbeF7c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534896605873-udrhsnqahi7q8hs5rlc7670gmbeut0r6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
