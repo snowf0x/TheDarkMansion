@@ -19,7 +19,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     ChatAdapter(ArrayList<String> text, int player) {
         this.text = text;
         this.player = player;
-       
     }
 
     @NonNull
@@ -30,9 +29,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ChatAdapter.ViewHolder viewHolder, int i) {
         String message = text.get(i);
+        if(message.length()<=1)
+            message = message+"  ";
         if(Character.getNumericValue(message.charAt(0)) == player) {
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.ALIGN_PARENT_END);
+            viewHolder.emojiTextView.setLayoutParams(params);
+        }
+        else
+        {
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.addRule(RelativeLayout.ALIGN_PARENT_START);
             viewHolder.emojiTextView.setLayoutParams(params);
         }
         if(message.charAt(1) != '\'') {

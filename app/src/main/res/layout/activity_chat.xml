@@ -53,7 +53,8 @@
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/snow"
+        android:src="@drawable/school"
+        android:id="@+id/backg"
         android:scaleType="centerCrop"
         />
     <android.support.v7.widget.RecyclerView
