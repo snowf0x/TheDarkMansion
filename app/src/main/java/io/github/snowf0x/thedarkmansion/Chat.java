@@ -192,10 +192,15 @@ public class Chat extends AppCompatActivity {
     }
 
     public void send(View view) {
-        databaseReference.push().setValue(player+editText.getText().toString()+"");
-        editText.setText("");
-        editText.setHint("");
-        editText.removeTextChangedListener(textwatcher);
+        String s = editText.getText().toString();
+        if(s != null) {
+            databaseReference.push().setValue(player+s);
+            editText.setText("");
+            editText.setHint("");
+            editText.removeTextChangedListener(textwatcher);
+        }
+        else
+            Toast.makeText(this, "Type something", Toast.LENGTH_SHORT).show();
 
     }
     @Override
@@ -218,116 +223,132 @@ public class Chat extends AppCompatActivity {
         }
     }
     private class ChatCounter {
-        private int P1, P2,P1_ghost= 1,P2_ghost=1;
+        private int P1, P2,P1_ghost= 0,P2_ghost=1;
 
         void AddP1(){
             if(P2_ghost > 0) {
                 P1++;
-                Log.d("@@@@@@@-ADD-P1","P1 = "+P1+"----P2_Ghost = "+P2_ghost+"(Now 0), P1_Ghost="+P1_ghost);
+                Log.d("@@@@@@@-ADD-P1", "P1 = " + P1 + "----P2_Ghost = " + P2_ghost + "(Now 0), P1_Ghost=" + P1_ghost);
                 P2_ghost = 0;
+
+                if (player == 2) {
+                    switch (P1) {
+                        case 3:
+                            setText("Hey! btw I wanted to say something..");
+                            break;
+                        case 4:
+                            setText("About Jenny...😥");
+                            break;
+                        case 5:
+                            setText("I fell strange that Jenny killed herself \uD83D\uDE41\uD83D\uDE16");
+                            break;
+                        case 6:
+                            setText("I mean such a positive girl.. why?");
+                            break;
+                        case 7:
+                            setText("hmm? 🧐🧐");
+                            break;
+                        case 8:
+                            setText("I think she's attending extra classes..\nI don't think she will come soon");
+                            background.release();
+                            background = MediaPlayer.create(Chat.this, R.raw.bell);
+                            background.setLooping(false);
+                            background.start();
+                            break;
+                        case 9:
+                            setText("What should we do?");
+                            break;
+                        case 10:
+                            setText("Let me check her bag.. maybe we can find some evidence?\nStand in front of me and GIVE COVER!");
+                            break;
+                        case 11:
+                            new AlertDialog.Builder(Chat.this).setTitle("Bag").setMessage("press search to check Joe's bag")
+                                    .setPositiveButton("Search", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            editText.setText("\'1");
+                                            send(null);
+                                            editText.setText("Hmm an apology letter? Sorry for my decisions? Ouija Bord?");
+                                            send(null);
+                                        }
+                                    }).setCancelable(false).create().show();
+                            break;
+                        case 12:
+                            setText("Oh My God!.. we should go home now, it seems like it's gonna rain");
+                            break;
+                        case 13:
+                            setText("You too.. \uD83D\uDE00");
+                            wallpaper.setImageResource(R.drawable.rain);
+                            background.stop();
+                            background.release();
+                            background = MediaPlayer.create(Chat.this, R.raw.rain);
+                            background.setLooping(true);
+                            background.start();
+                            break;
+                    }
+                } else {
+                    switch (P1) {
+                        case 8:
+                            background.stop();
+                            background.release();
+                            background = MediaPlayer.create(Chat.this, R.raw.bell);
+                            background.setLooping(false);
+                            background.start();
+                            break;
+                        case 13:
+                            wallpaper.setImageResource(R.drawable.rain);
+                            background.stop();
+                            background.release();
+                            background = MediaPlayer.create(Chat.this, R.raw.rain);
+                            background.setLooping(true);
+                            background.start();
+                            break;
+                    }
+                }
             }
             else
                 Log.d("@@@@@@@-ADD-P1","P1 = "+P1+"----P2_Ghost = "+P2_ghost+"(not 0, OUTSIDE IF), P1_Ghost="+(1+P1_ghost));
             P1_ghost++;
-
-            if (player == 2) {
-                switch (P1) {
-                    case 3:
-                        setText("Hey! btw I wanted to say something..");
-                        break;
-                    case 4:
-                        setText("About Jenny...😥");
-                        break;
-                    case 5:
-                        setText("I fell strange that Jenny killed herself \uD83D\uDE41\uD83D\uDE16");
-                        break;
-                    case 6:
-                        setText("I mean such a positive girl.. why?"); break;
-                    case 7:
-                        setText("hmm? 🧐🧐"); break;
-                    case 8:
-                        setText("I think she's attending extra classes..\nI don't think she will come soon");
-                        background.release();
-                        background = MediaPlayer.create(Chat.this,R.raw.bell);
-                        background.setLooping(false);
-                        background.start();
-                        break;
-                    case 9:
-                        setText("What should we do?");
-                        break;
-                    case 10:
-                        setText("Let me check her bag.. maybe we can find some evidence?\nStand in front of me and GIVE COVER!");
-                        break;
-                    case 11:
-                        new AlertDialog.Builder(Chat.this).setTitle("Bag").setMessage("press search to check Joe's bag")
-                                .setPositiveButton("Search", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                editText.setText("\'1");
-                                send(null);
-                                editText.setText("Hmm an apology letter? Sorry for my decisions? Ouija Bord?");
-                                send(null);
-                            }
-                        }).setCancelable(false).create().show();
-                        break;
-                    case 12:
-                        setText("Oh My God!.. we should go home now, it seems like it's gonna rain");
-                        break;
-                    case 13:
-                        setText("You too.. \uD83D\uDE00");
-                        wallpaper.setImageResource(R.drawable.rain);
-                        background.stop();
-                        background.release();
-                        background = MediaPlayer.create(Chat.this,R.raw.rain);
-                        background.setLooping(true);
-                        background.start();
-                        break;
-                }
-            }
         }
         void AddP2(){
             if(P1_ghost > 0) {
                 P2++;
                 Log.d("@@@@@@@-ADD-P2","P2 = "+P2+"----P1_Ghost = "+P1_ghost+"(Now 0), P1_Ghost="+P1_ghost);
                 P1_ghost = 0;
+                if (player == 1) {
+                    switch (P2) {
+                        case 6:
+                            setText("her bff Joe's is surely hiding something, She's hiding fear in her sadness");
+                            break;
+                        case 7:
+                            setText("I doubt she did something.. btw  where is she? \uD83D\uDE44");
+                            break;
+                        case 8:
+                            setText("Oh Crap! School's now over too 😑");
+                            break;
+                        case 11:
+                            setText("\uD83D\uDE28 Did she kill her!? WTF...\nbe online at home we got a serious discussion");
+                            break;
+                        case 12:
+                            setText("Take care Annie! Bye");
+                            break;
+                        case 13:
+                            break;
+                    }
+                }
+                else{
+                    switch (P2){
+                        case 13:
+                            //Toast.makeText(Chat.this, "Rain should be triggered 2", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
             else
                 Log.d("@@@@@@@-ADD-P2","P2 = "+P2+"----P1_Ghost = "+P1_ghost+"(not 0, OUTSIDE IF), P1_Ghost="+(1+P1_ghost));
 
             P2_ghost++;
 
-            if (player == 1) {
-                switch (P2) {
-                    case 6:
-                        setText("her bff Joe's is surely hiding something, She's hiding fear in her sadness");
-                        break;
-                    case 7:
-                        setText("I doubt she did something.. btw  where is she? \uD83D\uDE44");
-                        break;
-                    case 8:
-                        background.stop();
-                        background.release();
-                        background = MediaPlayer.create(Chat.this,R.raw.bell);
-                        background.setLooping(false);
-                        background.start();
-                        setText("Oh Crap! School's now over too 😑");
-                        break;
-                    case 12:
-                        setText("\uD83D\uDE28 Did she kill her!? WTF...\nbe online at home we got a serious discussion");
-                        break;
-                    case 13:
-                        setText("Take care Annie! Bye");
-                        break;
-                    case 14:
-                        wallpaper.setImageResource(R.drawable.rain);
-                        background.stop();
-                        background.release();
-                        background = MediaPlayer.create(Chat.this,R.raw.rain);
-                        background.setLooping(true);
-                        background.start();
-                        break;
-                }
-            }
+
         }
         private ChatCounter() {
             P1 = 0;
