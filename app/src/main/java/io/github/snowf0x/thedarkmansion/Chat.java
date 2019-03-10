@@ -88,6 +88,7 @@ public class Chat extends AppCompatActivity {
             player = 2;
             databaseReference.addChildEventListener(new ChildEventListener() {
                 @Override
+
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     if(!dataSnapshot.getKey().equals("Accepted")) {
                         messages.add(dataSnapshot.getValue(String.class));
@@ -284,6 +285,7 @@ public class Chat extends AppCompatActivity {
                             background = MediaPlayer.create(Chat.this, R.raw.rain);
                             background.setLooping(true);
                             background.start();
+                            startTyping("Ahh.. Finally reached home! I wonder where he might be.. maybe still hanging around in bus :p   ");
                             break;
                     }
                 } else {
@@ -301,7 +303,7 @@ public class Chat extends AppCompatActivity {
                             background.release();
                             background = MediaPlayer.create(Chat.this, R.raw.rain);
                             background.setLooping(true);
-                            background.start();
+                            startTyping("1 New Message +19725127223? Download this amazing Ouija Board app, its fun..? Hmm yeah bye the way Let's try I don't even know how to use Ouija :p   ");
                             break;
                     }
                 }
@@ -333,6 +335,8 @@ public class Chat extends AppCompatActivity {
                             setText("Take care Annie! Bye");
                             break;
                         case 13:
+                            //
+                            //editText.setText("Hey! ");
                             break;
                     }
                 }
